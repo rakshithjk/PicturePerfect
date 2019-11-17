@@ -25,10 +25,7 @@ class MovieBrowser extends React.Component {
       currentMovies: [],
       sortState: 0
     };
-    // Binds the handleScroll to this class (MovieBrowser)
-    // which provides access to MovieBrowser's props
-    // Note: You don't have to do this if you call a method
-    // directly from a lifecycle method
+    
     this.handleScroll = this.handleScroll.bind(this);
     this.handleDropdownChange = this.handleDropdownChange.bind(this);
   }
@@ -164,6 +161,7 @@ class MovieBrowser extends React.Component {
                   <option value="rd_asc">Sort by Release Date ascending</option>
                   <option value="tt_asc">Sort by Title</option>
                 </select>
+                <button className="addbtn">Add new</button>
               </div>
               <Container id="container"  >
                 <Row id="row">
@@ -171,6 +169,7 @@ class MovieBrowser extends React.Component {
                 </Row>
               </Container>
               </div>
+              
             </Route>
             <Route path='/moviedescription/:movieid' component={MovieDisplay}/>
           </Switch>

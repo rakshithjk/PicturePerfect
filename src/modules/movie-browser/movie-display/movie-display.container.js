@@ -14,7 +14,7 @@ import {
 } from "react-router-dom";
 
 const styles = {
-  // Can use functions to dynamically build our CSS
+  
   dialogContent: (backgroundUrl) => ({
     backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(${backgroundUrl}) `,    
     backgroundRepeat: 'no-repeat',
@@ -41,11 +41,14 @@ class MovieDisplay extends Component {
       currentPage: 1,
       sortState: 0
     };
-    this.handleScroll = this.handleScroll.bind(this);
+    
     this.handleDropdownChange = this.handleDropdownChange.bind(this);
+    this.prev = this.prev.bind(this);
+    this.next = this.next.bind(this);
   }
 
   componentDidMount() {
+    
     this.props.getMovieReviews(this.props.location.state.movie.movie.id, this.state.sortState);
   }
 
@@ -62,23 +65,10 @@ class MovieDisplay extends Component {
       this.tt_asc();
     }
   }
-
-  handleScroll() {
-    //console.log(this);
-    //console.log(this.state);
-    //console.log(this.props);
-    //console.log(this.props.topMovies);
-    //console.log(this.props.topMovies.response)
-    //const {topMovies} = this.props;                                            
-    if (!this.props.topMovies.isLoading) {
-      let percentageScrolled = scrollHelpers.getPercentageScrolledDown(window);
-      if (percentageScrolled > .8) {
-        const nextPage = this.state.currentPage + 1;
-        this.props.getTopMovies(nextPage,this.state.sortState);
-        this.setState({currentPage: nextPage});
-      }
-    }
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.handleScroll);
   }
+
 
   async id_asc() {
     //alert("clicked");
@@ -90,6 +80,21 @@ class MovieDisplay extends Component {
     this.props.getMovieReviews(this.props.location.state.movie.movie.id, this.state.sortState);
   }
 
+  async prev() {
+    //alert(this);
+    const pg = (this.state.currentPage-1)>1?(this.state.currentPage-1):1;
+    //alert(pg);
+    await this.setState({currentPage: pg}) ;
+    this.props.getMovieReviews(this.props.location.state.movie.movie.id, this.state.sortState,this.state.currentPage);
+  }
+
+  async next() {
+    //alert(this);
+    const pg = (this.state.currentPage+1);
+    //alert(pg);
+    await this.setState({currentPage: pg}) ;
+    this.props.getMovieReviews(this.props.location.state.movie.movie.id, this.state.sortState,this.state.currentPage);
+  }
 
   async rd_asc() {
     //alert("clicked");
@@ -145,6 +150,7 @@ class MovieDisplay extends Component {
             
         </div>
         <div className="choicebuttons">
+          <button className="prev" onClick={this.prev}>Previous</button>
           <button className="shows"> <Link to="/shows">SHOWS</Link></button> 
           <Switch>
             <Route path="/shows">
@@ -152,6 +158,7 @@ class MovieDisplay extends Component {
             </Route>
           </Switch>
           <button className="addreview"> ADD Review</button>
+          <button className="next" onClick={this.next}>Next</button>
         </div>
         <div className="reviewContainer">
 

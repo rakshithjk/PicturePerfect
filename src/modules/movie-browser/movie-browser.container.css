@@ -46,3 +46,10 @@
 .select-style select:focus {
   outline: none;
 }
+
+.addbtn {
+  padding: 5px 8px;
+  position: abslute;
+  position: relative;
+  float: right;
+}
