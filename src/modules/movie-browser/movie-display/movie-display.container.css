@@ -1,0 +1,100 @@
+.poster{
+   
+    padding:25px;
+    background-color: yellow;
+    width:'100%';
+    flex-grow: 1;
+  }
+
+
+  .poster1{
+    padding:5;
+    flex-grow: 1;
+    background-color: yellow;
+    
+  }
+
+  .main{
+    background-color: "gray";
+    display: flex;
+    justify-content: 'space-around';
+    flex-direction: row ;
+    flex: 0 0 60px;
+  }
+
+  .innerMain{
+    display: flex;
+    height: 400;
+    flex-direction: row ;
+    justify-content: 'space-around';
+  }
+
+  .text1{
+    background-color: pink;
+    color:black;
+    padding: 15px;
+  }
+
+  .rating{
+    padding: 15px;
+    background-color: aliceblue;
+    color:black;
+    width: 50%;
+  }
+
+  .release{
+    padding: 15px;
+    background-color:seagreen;
+    color:black;
+    width: 50%;
+  }
+
+  .title{
+    float: left;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 20;
+  }
+
+  .info{
+    display: flex;
+    flex-direction: row
+  }
+
+  .reviewContainer {
+    border: 15 px;
+    border-color: black;
+    border-style: double;
+    border-width: 10px;
+  }
+
+  .choicebuttons {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  
+
+  .shows {
+    background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  width: 50%;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+.addreview {
+    background-color: rosybrown;; 
+  border: none;
+  color: white;
+  width: 50%;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
