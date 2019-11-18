@@ -19,15 +19,7 @@ class ReviewCardComponent extends React.Component {
     
     const {review} = this.props;
     // The CardTitle.subtitle won't render if it's null
-    const ColoredLine = ({ color }) => (
-      <hr
-          style={{
-              color: color,
-              backgroundColor: color,
-              height: 5
-          }}
-      />
-  );
+    
     console.log("qwer",review.review_id);
     return (
       
@@ -44,7 +36,6 @@ class ReviewCardComponent extends React.Component {
           
         </div>
         <h2 className="reviewtext">{review.review}</h2>
-        <ColoredLine color="red" />
       </div>
       
       

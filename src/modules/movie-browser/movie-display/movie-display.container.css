@@ -100,11 +100,11 @@
 }
 
 .prev {
-  background-color: cornflowerblue;;
+background-color: cornflowerblue;;
 border: none;
 color: white;
 padding: 15px 32px;
-width: 50%;
+width: 15%;
 text-align: center;
 text-decoration: none;
 display: inline-block;
@@ -112,11 +112,11 @@ font-size: 16px;
 }
 
 .next {
-  background-color: gold;;
+background-color: lightslategrey;
 border: none;
 color: white;
 padding: 15px 32px;
-width: 50%;
+width: 15%;
 text-align: center;
 text-decoration: none;
 display: inline-block;

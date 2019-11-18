@@ -5,6 +5,7 @@ import {AppBar, TextField, RaisedButton} from 'material-ui';
 import * as movieActions from './movie-browser.actions';
 import * as movieHelpers from './movie-browser.helpers';
 import MovieList from './movie-list/movie-list.component';
+import HomePage from '../home-page/home-page.container';
 import * as scrollHelpers from '../common/scroll.helpers';
 import MovieModal from './movie-modal/movie-modal.container';
 import {
@@ -127,7 +128,7 @@ class MovieBrowser extends React.Component {
     
       <Router>
         
-      <AppBar title='Movie Browser' style={{backgroundColor: "#e91e63"}} >
+      <AppBar title='Picture Perfect' style={{backgroundColor: "#e91e63"}} >
       <Link to="/">
           <RaisedButton >
             Home
@@ -147,7 +148,7 @@ class MovieBrowser extends React.Component {
       </AppBar>
       
           <Switch>
-          <Route exact path='/' component={Home}/>
+          <Route exact path='/' component={HomePage}/>
             <Route path="/search">
               <Search />
             </Route>
