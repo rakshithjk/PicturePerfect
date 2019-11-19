@@ -7,7 +7,6 @@ import * as movieHelpers from './movie-browser.helpers';
 import MovieList from './movie-list/movie-list.component';
 import HomePage from '../home-page/home-page.container';
 import * as scrollHelpers from '../common/scroll.helpers';
-import MovieModal from './movie-modal/movie-modal.container';
 import {
   BrowserRouter as Router,
   Switch,
@@ -33,6 +32,7 @@ class MovieBrowser extends React.Component {
 
   componentDidMount() {
     window.onscroll = this.handleScroll;
+    console.log("asdasdassdasdasd0",this.props.content)
     this.props.getTopMovies(this.state.currentPage,this.state.sortState);
   }
 
@@ -112,11 +112,6 @@ class MovieBrowser extends React.Component {
     const movies = movieHelpers.getMoviesList(this.props.topMovies.response);
     console.log("movies",movies);
     
-    const Home = () => (
-      <div>
-        <h1>Welcome to Picture Perfect Website!</h1>
-      </div>
-    )
     
 
 
@@ -128,30 +123,10 @@ class MovieBrowser extends React.Component {
     
       <Router>
         
-      <AppBar title='Picture Perfect' style={{backgroundColor: "#e91e63"}} >
-      <Link to="/">
-          <RaisedButton >
-            Home
-          </RaisedButton >
-          </Link>
-
-        <Link to="/search">
-          <RaisedButton >
-            Search
-          </RaisedButton >
-          </Link>
-          <Link to="/movie-list">
-            <RaisedButton > 
-            Movie-List
-            </RaisedButton>
-          </Link>
-      </AppBar>
+      
       
           <Switch>
-          <Route exact path='/' component={HomePage}/>
-            <Route path="/search">
-              <Search />
-            </Route>
+          
             <Route path="/movie-list" >  
               <div id="listing">
               <div className="filters">

@@ -1,4 +1,6 @@
-
+.home {
+   background-color: black;
+}
 
 h1 {
    margin: 0;
@@ -6,30 +8,7 @@ h1 {
    font-size:1.85em;
 }
 
-.examples {
-   text-align: center;
-   margin-left:15px;
-   display: flex;
-   justify-content: space-between;
-}
 
-.image:hover {
-   -webkit-transform: scale(1.35);
-   transform: scale(1.35);
-   opacity: .9;
-}
-
-.image {
-   -webkit-transition: all 0.7s ease;
-   transition: all 0.7s ease;
-   padding: 15px;
-   margin:auto;
-
-}
-
-/*#example1:hover {
-   opacity: .1;
-}*/
 
 
 
@@ -37,6 +16,8 @@ h1 {
    padding-left:40px;
    border-bottom:2px solid rgba(0, 0, 0, 0.2);
    margin-bottom:20px;
+   text-decoration: none;
+   size: 15%;
 }
 li.image{
    margin:auto;
@@ -48,4 +29,9 @@ li.image{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    flex-wrap: nowrap;
+}
+
+.moviehome {
+   display: flex;
 }

@@ -7,6 +7,7 @@ export const keys = {
   'SEARCH_MOVIES': 'SEARCH_MOVIES',
   'GET_MOVIE_DETAILS': 'GET_MOVIE_DETAILS',
   'GET_MOVIE_REVIEWS': 'GET_MOVIE_REVIEWS',
+  'GET_MOVIES_HOME': 'GET_MOVIEs_HOME'
 };
 
 export const getTopMovies = (page,order) => createAsyncActionCreator(
@@ -17,6 +18,10 @@ export const getTopMovies = (page,order) => createAsyncActionCreator(
   // requestParams
   {page,order}
 );
+export const getHomeMovies = () => createAsyncActionCreator(
+  keys.GET_MOVIES_HOME,
+  movieService.getHomeMovies
+)
 
 export const searchMovies = (query, page) => createAsyncActionCreator(
   keys.SEARCH_MOVIES,

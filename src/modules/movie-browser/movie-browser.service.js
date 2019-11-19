@@ -61,6 +61,12 @@ export const searchMovies = async ({ page, query}) => {
   return fetch(fullUrl);
 }
 
+
+export const getHomeMovies = async() => {
+  const fullUrl = createMovieDbUrl('/home/movie');
+  return fetch(fullUrl);
+}
+
 export const getMovieDetails = async ({movieId}) => {
   const fullUrl = createMovieDbUrl(`/movie/${movieId}`);
   return fetch(fullUrl);

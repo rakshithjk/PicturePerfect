@@ -71,6 +71,7 @@ const movieBrowserReducer = combineReducers({
   topMovies: createAsyncReducer(movieActionKeys.GET_TOP_MOVIES, {
     [`${movieActionKeys.GET_TOP_MOVIES}_SUCCESS`]: moviesSuccessReducer
   }),
+  topMoviesHome: createAsyncReducer(movieActionKeys.GET_MOVIES_HOME),
   movieSearch: createAsyncReducer(movieActionKeys.SEARCH_MOVIES, {
     [`${movieActionKeys.SEARCH_MOVIES}_SUCCESS`]: moviesSuccessReducer
   }),
