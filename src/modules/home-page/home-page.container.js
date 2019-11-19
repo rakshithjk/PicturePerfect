@@ -122,3 +122,7 @@ export default connect(
     // Map action creators to properties of our component
     { getHomeMovies }
   )(HomePage);
+
+  //
+  //
+  //
