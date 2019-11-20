@@ -10,7 +10,6 @@ const styles = {
 }
 
 
-// Increasing lg reduces number of columns. ???????????????????????
 const MovieListComponent = ({movies, isLoading}) => {
   console.log("mosss",movies);
   const movieColumns = movies ? movies.map(movie => (

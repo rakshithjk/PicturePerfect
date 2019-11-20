@@ -17,6 +17,7 @@ import Search from './movie-search/movie-search.container';
 import '@trendmicro/react-sidenav/dist/react-sidenav.css';
 import './movie-browser.container.css';
 import MovieDisplay from './movie-display/movie-display.container'
+import AddNew from './add-new/add-new.component'
 class MovieBrowser extends React.Component {
   constructor(props) {
     super(props); 
@@ -121,7 +122,7 @@ class MovieBrowser extends React.Component {
       
 
     
-      <Router>
+      
         
       
       
@@ -130,14 +131,13 @@ class MovieBrowser extends React.Component {
             <Route path="/movie-list" >  
               <div id="listing">
               <div className="filters">
-                <h3 className="text"> Filters</h3>
                 <select className="select-style" onChange={this.handleDropdownChange} name="Filters">
                 <option disabled selected value> -- Select a filter -- </option>
-                  <option value="id_asc">Sort by Id ascending</option>
+                  <option value="id_asc">Sort by Id ascending ( Default )</option>
                   <option value="rd_asc">Sort by Release Date ascending</option>
                   <option value="tt_asc">Sort by Title</option>
                 </select>
-                <button className="addbtn">Add new</button>
+                <button className="addbtn"><Link to="/addnew">Add new</Link></button>
               </div>
               <Container id="container"  >
                 <Row id="row">
@@ -147,12 +147,12 @@ class MovieBrowser extends React.Component {
               </div>
               
             </Route>
-            <Route path='/moviedescription/:movieid' component={MovieDisplay}/>
-          </Switch>
+            
+            </Switch>
         
         
     
-    </Router>
+    
     
     </div>
     );

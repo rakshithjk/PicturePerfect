@@ -17,24 +17,31 @@ import {
   } from "react-router-dom";
 import Search from '../movie-browser/movie-search/movie-search.container'
 import MovieDisplay from '../movie-browser/movie-display/movie-display.container'
-
+import MovieShows from '../movie-browser/movie-shows/movie-shows.display'
+import AddNew from '../movie-browser/add-new/add-new.component'
 const HomeDisplay = (movieColumns) => (
   
   <div className="home">
     
-    <Link to="/movie-list"><label><h1 class="sectionTitle">Movies</h1></label></Link>
+    <label><br/><h1 class="sectionTitle">Top Movies</h1></label> 
+    <hr/>
       <div className="moviehome">
         {movieColumns}
+        <label className="more"><Link to="/movie-list"><h1 className="moretext">MORE</h1></Link></label>
       </div>
-   
-      <h1 class="sectionTitle">TV Shows</h1>
+      <br/>
+      <br/><h1 class="sectionTitle">TV Shows</h1>
+      <hr/>
       <div className="moviehome">
         {movieColumns}
+        <label className="more"><Link to="/movie-list"><h1 className="moretext">MORE</h1></Link></label>
       </div>
-
-      <h1 class="sectionTitle">Documetaries</h1>
+      <br/>
+      <br/><h1 class="sectionTitle">Documentaries</h1>
+      <hr/>
       <div className="moviehome">
         {movieColumns}
+        <label className="more"><Link to="/movie-list"><h1 className="moretext">MORE</h1></Link></label>
       </div>
 
   </div>
@@ -62,24 +69,27 @@ class HomePage extends React.Component{
         return (
             <div>       
           <Router>
-                <AppBar title='Picture Perfect' style={{backgroundColor: "#e91e63"}} >
-        <Link to="/">
-          <RaisedButton >
+                <AppBar title='Picture Perfect' style={{backgroundColor: "blue"}} >
+        <div className="appbarbtn">
+          <Link to="/">
+        
+          <Button className="homebtn" >
             Home
-          </RaisedButton >
+          </Button >
           </Link>
 
-        <Link to="/search">
-          <RaisedButton >
+        <Link to="/search" >
+          <Button className="searchbtn">
             Search
-          </RaisedButton >
+          </Button >
         </Link>
           
         <Link to="/movie-list">
-            <RaisedButton > 
+            <Button className="moviebtn"> 
             Movie-List
-            </RaisedButton>
+            </Button>
         </Link>
+        </div>
         </AppBar>
 
         <Switch>
@@ -96,6 +106,12 @@ class HomePage extends React.Component{
         </Route>
 
         <Route path='/moviedescription/:movieid' component={MovieDisplay}/>
+        
+        <Route path="/addnew">
+                <AddNew/>
+            </Route>
+        
+        <Route path="/shows"  render={(props) => <MovieShows  />}/>
     </Switch>
 
     
@@ -123,6 +139,4 @@ export default connect(
     { getHomeMovies }
   )(HomePage);
 
-  //
-  //
   //

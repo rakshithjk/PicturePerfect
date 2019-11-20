@@ -16,21 +16,20 @@
 
 .filters {
   display: flex;
-  color: blueviolet;
-  background-color: blueviolet;
+  background-color: black;
+  justify-content: space-between;
+  height: 50px;
 }
 
-.text {
-    color: yellow;
-    width: 50%;
-}
+
 
 .select-style {
   border: 1px solid #ccc;
-  width: 120px;
   border-radius: 3px;
   overflow: hidden;
-  background-color: darkgoldenrod;;
+  background-color: darkgoldenrod;
+  padding: 10px;
+
 }
 
 .select-style select {
@@ -48,8 +47,10 @@
 }
 
 .addbtn {
-  padding: 5px 8px;
-  position: abslute;
-  position: relative;
+  padding: 10px;
   float: right;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  overflow: hidden;
+  background-color: darkgoldenrod;;
 }

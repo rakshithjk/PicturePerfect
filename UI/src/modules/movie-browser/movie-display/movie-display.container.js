@@ -4,7 +4,6 @@ import * as movieActions from '../movie-browser.actions';
 import {connect} from 'react-redux';
 import LoaderComponent from '../../common/loader.component';
 import ReviewList from './review-display/review-display.container.js'
-import * as scrollHelpers from '../../common/scroll.helpers'
 import MovieShows from '../movie-shows/movie-shows.display'
 import {
   BrowserRouter as Router,
@@ -18,12 +17,10 @@ const styles = {
   dialogContent: (backgroundUrl) => ({
     backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(${backgroundUrl}) `,    
     backgroundRepeat: 'no-repeat',
-    backgroundSize: '100%',
-    height: '100%',
+    backgroundSize: 'cover',
     minHeight: 400,
     color: 'white',
     padding: 10,
-    flexGrow: 8,
   }),
  
 }
@@ -125,58 +122,62 @@ class MovieDisplay extends Component {
       const reviews = check(this.props.reviews.response);
       console.log("123",reviews);
       return (
-        <div>
-        <div >
-            <div style={styles.dialogContent(movie.background_path)} className="innerMain">
+        <div style={styles.dialogContent(movie.background_path)} className="displaycontainer">
+            <h1><center><span className="text1">{movie.title} <span className="revrate">Reviews and Ratings</span></span></center></h1>
+
+            <div  className="innerMain">
+              <div className="moviedetails">
+                <div className="moviecontent">
+                    <div >
+                  
+                      < div className="poster">
+                          <img  src={movie.poster_path} className="poster1" />
+                        </div>
+                      
+                        <h2><span className="rating">Rating {movie.vote_average}</span></h2>
+                        <h2><span className="release">Release Date: {movie.release_date}</span></h2>
+                        <h2><span className="genre">Genres - {movie.genre_ids}</span></h2>
+                        <h3><span className="smry">{movie.overview}</span></h3>
+                      </div>
+                    </div>
+                  </div>  
+              
+              
+
+              <div className="review">
+                  <div className="choicebuttons">
+                    <button className="prev" onClick={this.prev}>Previous</button>
+                    <button className="shows"> <Link to="/shows"><span className="showstext">SHOWS</span></Link></button> 
+                    <div className="filteroption">
+                      <div className="filters">
+                        <select className="select-style" onChange={this.handleDropdownChange} name="Filters">
+                          <option disabled selected value> -- Select a filter -- </option>
+                          <option value="id_asc">Sort by Id ascending ( Default )</option>
+                          <option value="rd_asc">Sort by Date ascending</option>
+                          <option value="tt_asc">Sort by Rating descending</option>
+                          </select>
+                        </div>
+                      </div> 
+                    <button className="addreview"> ADD Review</button>
+                    <button className="next" onClick={this.next}>Next</button>
+                    </div>
                 
-                < div className="poster">
-                  <img  src={movie.poster_path} />
-                </div>
-                       
-                <div className="title">
-                  <h1 className="text1">{movie.title}</h1>
-                  <div className="info">
-                  <h2 className="rating">Rating {movie.vote_average}</h2>
-                  <h2 className="release">Release Date {movie.release_date}</h2>
+                  
+                
+                
+                  <div className="reviewContainer">
+                     <ReviewList reviews = {reviews}/>
+                    </div>
                   </div>
-                  <h2>Summary - </h2>
-                  <h3>{movie.overview}</h3>
-                </div>
 
-           
-                
-            </div>
-
-            
-        </div>
-        <div className="choicebuttons">
-          <button className="prev" onClick={this.prev}>Previous</button>
-          <button className="shows"> <Link to="/shows">SHOWS</Link></button> 
-          <Switch>
-            <Route path="/shows">
-              <MovieShows/>
-            </Route>
-          </Switch>
-          <button className="addreview"> ADD Review</button>
-          <button className="next" onClick={this.next}>Next</button>
-        </div>
-        <div className="reviewContainer">
-
-        <div className="filters">
-                <h3 className="text"> Filters</h3>
-                <select className="select-style" onChange={this.handleDropdownChange} name="Filters">
-                <option disabled selected value> -- Select a filter -- </option>
-                  <option value="id_asc">Sort by Id ascending</option>
-                  <option value="rd_asc">Sort by Date ascending</option>
-                  <option value="tt_asc">Sort by Rating descending</option>
-                </select>
               </div>
-          
-        <ReviewList reviews = {reviews}/>
-          
-      </div>
-      
-      </div>
+
+
+
+
+
+          </div>
+         
       );
     }
   }
@@ -191,3 +192,49 @@ class MovieDisplay extends Component {
     { ...movieActions }
 
   )(MovieDisplay);
+  /*
+  <h1><center><span className="text1">{movie.title} <span className="revrate">Reviews and Ratings</span></span></center></h1>
+
+          <div  className="innerMain">
+              <div className="moviedetails">
+                  <div >
+                
+                    < div className="poster">
+                        <img  src={movie.poster_path} className="poster1" />
+                      </div>
+                    
+                      <h2><span className="rating">Rating {movie.vote_average}</span></h2>
+                      <h2><span className="release">Release Date: {movie.release_date}</span></h2>
+                      <h2><span className="genre">Genres - {movie.genre_ids}</span></h2>
+                      <h3><span className="smry">{movie.overview}</span></h3>
+                    </div>
+                </div>
+                <div className="review">
+                  <div className="choicebuttons">
+                    <button className="prev" onClick={this.prev}>Previous</button>
+                    <button className="shows"> <Link to="/shows"><span className="showstext">SHOWS</span></Link></button> 
+                    <div className="filteroption">
+                      <div className="filters">
+                        <select className="select-style" onChange={this.handleDropdownChange} name="Filters">
+                          <option disabled selected value> -- Select a filter -- </option>
+                          <option value="id_asc">Sort by Id ascending</option>
+                          <option value="rd_asc">Sort by Date ascending</option>
+                          <option value="tt_asc">Sort by Rating descending</option>
+                          </select>
+                        </div>
+                      </div> 
+                    <button className="addreview"> ADD Review</button>
+                    <button className="next" onClick={this.next}>Next</button>
+                    </div>
+                
+                  <Switch>
+                    <Route exact path="/shows"  render={(props) => <MovieShows {...props} data={movie} />}/>
+                    </Switch>
+                
+                
+                  <div className="reviewContainer">
+                     <ReviewList reviews = {reviews}/>
+                    </div>
+                  </div>
+            </div>
+      */

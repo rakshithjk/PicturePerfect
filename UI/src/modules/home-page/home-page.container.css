@@ -17,7 +17,8 @@ h1 {
    border-bottom:2px solid rgba(0, 0, 0, 0.2);
    margin-bottom:20px;
    text-decoration: none;
-   size: 15%;
+   size: ;
+   font-family: 'Times New Roman', Times, serif;
 }
 li.image{
    margin:auto;
@@ -34,4 +35,77 @@ li.image{
 
 .moviehome {
    display: flex;
+   justify-content: center ;
+}
+
+.more {
+    
+    padding-top: 10%;
+    color: white;
+    text-decoration: none;
+}
+
+.moretext {
+   text-decoration: none;
+   font-family: 'Times New Roman', Times, serif;
+}
+
+.homebtn {
+   background-color:blue;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  align-self: left;
+  float: left;
+  margin-left: 10px;
+  margin-top: 10px;
+  
+}
+.homebtn:hover {
+   background-color: cadetblue;
+}
+.moviebtn{
+   background-color: blue;
+   border: none;
+   color: white;
+   padding: 15px 32px;
+   text-align: center;
+   text-decoration: none;
+   font-size: 16px;
+   align-self: left;
+   float: left;
+   margin-top: 10px;
+   margin-left: 10px;
+}
+.moviebtn:hover {
+   background-color: cadetblue;
+}
+
+.searchbtn {
+   background-color: blue;
+   border: none;
+   color: white;
+   padding: 15px 32px;
+   text-align: center;
+   text-decoration: none;
+   font-size: 16px;
+   align-self: left;
+   float: left;
+   margin-top: 10px;
+   margin-left: 10px;   
+}
+
+.searchbtn:hover {
+   background-color: cadetblue;
+}
+
+.appbarbtn {
+   vertical-align: "middle";
+}
+
+.appbar {
+   background-color: rgb(255, 20, 110);
 }

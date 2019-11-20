@@ -1,20 +1,14 @@
 .main {
-    background-color: darkorange;
-    display: flex;
+    background-color:whitesmoke;
     flex-direction: column;
     padding: 10px;
-    border: 15 px;
-    border-color: black;
-    border-style: double;
-    border-width: 10px;
-    justify-content: space-between;
+    justify-content: center;;
+    width: 100%;
 }
 
 .fline {
     display: flex;
     flex-direction: row;
-    width: 100%;
-    background-color: darkred;
     justify-content: space-between;
 }
 
@@ -23,17 +17,21 @@
 }
 
 .reviewtext {
-    background-color: salmon;
+   
+    color: black;
 }
 
 .DeleteOptions {
   background-color: yellowgreen; 
   color: white;
-  padding: 15px 32px;
   text-align: center;
   text-decoration: none;
   float: right;
   font-size: 16px;
   position: relative;
-  
+  opacity: 0;
+}
+
+.main:hover .DeleteOptions{
+    opacity: 1;
 }

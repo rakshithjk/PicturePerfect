@@ -5,11 +5,11 @@ class MovieShows extends React.Component{
     render(){
         return (
             <div>       
-                 <h1> Work in Progress :)</h1>
+                 <h1>:) Work in Progress :)</h1>
             </div>
 
         )
     }
 }
 
-export default MovieShows
+export default MovieShows;

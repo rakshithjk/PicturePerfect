@@ -28,13 +28,14 @@ class ReviewCardComponent extends React.Component {
         <div className="fline">
           
           <h1 className="name">{review.user_name}</h1> 
-          <br/>
+          
 
           <h1>Rating : {review.Rating}</h1>
           
           <button className="DeleteOptions">Delete Options</button>
           
         </div>
+        
         <h2 className="reviewtext">{review.review}</h2>
       </div>
       
