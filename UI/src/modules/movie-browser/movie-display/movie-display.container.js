@@ -54,6 +54,8 @@ class MovieDisplay extends Component {
      }  
 
   componentDidMount() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
     this.setState({currentPage: 1});
     this.props.getMovieReviews(this.props.location.state.movie.movie.id, this.state.sortState);
   }
