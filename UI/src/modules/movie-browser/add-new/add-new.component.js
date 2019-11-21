@@ -1,12 +1,18 @@
 import React, { Component } from 'react';
+import Popup from "reactjs-popup";
+
 
 class AddNew extends Component {
     render() {
       return (
 
         <div>
-            <centre><h2>Work in progress :)</h2></centre>
-        </div>
+
+
+
+
+
+            </div>
         
       );
     }

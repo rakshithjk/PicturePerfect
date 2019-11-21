@@ -43,15 +43,22 @@ li.image{
     padding-top: 10%;
     color: white;
     text-decoration: none;
+    background: url('more_horiz.png') no-repeat center;
 }
+
 
 .moretext {
    text-decoration: none;
    font-family: 'Times New Roman', Times, serif;
+   line-height: 1px;
+
 }
 
+.moretext:hover {
+   color: sandybrown;
+}
 .homebtn {
-   background-color:blue;
+   background: linear-gradient(315deg, #a40606 90%, #d98324 0%);
   border: none;
   color: white;
   padding: 15px 32px;
@@ -65,10 +72,10 @@ li.image{
   
 }
 .homebtn:hover {
-   background-color: cadetblue;
+   background: linear-gradient(315deg, #a40606 0%, #d98324 0%);;
 }
 .moviebtn{
-   background-color: blue;
+   background: linear-gradient(315deg, #a40606 90%, #d98324 0%);
    border: none;
    color: white;
    padding: 15px 32px;
@@ -81,11 +88,11 @@ li.image{
    margin-left: 10px;
 }
 .moviebtn:hover {
-   background-color: cadetblue;
+    background: linear-gradient(315deg, #a40606 0%, #d98324 0%);;
 }
 
 .searchbtn {
-   background-color: blue;
+   background: linear-gradient(315deg, #a40606 90%, #d98324 0%);
    border: none;
    color: white;
    padding: 15px 32px;
@@ -99,7 +106,7 @@ li.image{
 }
 
 .searchbtn:hover {
-   background-color: cadetblue;
+   background: linear-gradient(315deg, #a40606 0%, #d98324 0%);;
 }
 
 .appbarbtn {
@@ -107,5 +114,7 @@ li.image{
 }
 
 .appbar {
-   background-color: rgb(255, 20, 110);
+   
+background: linear-gradient(315deg, #a40606 74%, #d98324 74%);
+
 }

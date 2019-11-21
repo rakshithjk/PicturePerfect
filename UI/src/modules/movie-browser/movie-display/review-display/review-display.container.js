@@ -8,7 +8,7 @@ const ReviewList = ({reviews}) => {
     //console.log("mosss",reviews.results);
     const reviewColumns = reviews ? reviews.map(review => (
       
-        <ReviewCard review={review} styles={{backgroundColor:"black"},{padding:"5px"}} />
+        <ReviewCard review={review} styles={{backgroundColor:"black"},{padding:"5px"}}  />
         
     )) : null;  
     

@@ -11,6 +11,9 @@ import {
   Route,
   Link
 } from "react-router-dom";
+import Popup from "./add-review/add-review.component"
+
+
 
 const styles = {
   
@@ -38,14 +41,20 @@ class MovieDisplay extends Component {
       currentPage: 1,
       sortState: 0
     };
-    
+    this.state = { showPopup: false };  
     this.handleDropdownChange = this.handleDropdownChange.bind(this);
     this.prev = this.prev.bind(this);
     this.next = this.next.bind(this);
   }
 
+  togglePopup() {  
+    this.setState({  
+         showPopup: !this.state.showPopup  
+    });  
+     }  
+
   componentDidMount() {
-    
+    this.setState({currentPage: 1});
     this.props.getMovieReviews(this.props.location.state.movie.movie.id, this.state.sortState);
   }
 
@@ -79,10 +88,15 @@ class MovieDisplay extends Component {
 
   async prev() {
     //alert(this);
+    if(this.state.currentPage>1){
     const pg = (this.state.currentPage-1)>1?(this.state.currentPage-1):1;
     //alert(pg);
     await this.setState({currentPage: pg}) ;
     this.props.getMovieReviews(this.props.location.state.movie.movie.id, this.state.sortState,this.state.currentPage);
+    }
+    else{
+      alert("This is the first page")
+    }
   }
 
   async next() {
@@ -113,7 +127,7 @@ class MovieDisplay extends Component {
     this.props.getMovieReviews(this.props.location.state.movie.movie.id, this.state.sortState);
   }
 
-  
+   
 
     render() {
       //console.log(this.props);
@@ -124,7 +138,7 @@ class MovieDisplay extends Component {
       return (
         <div style={styles.dialogContent(movie.background_path)} className="displaycontainer">
             <h1><center><span className="text1">{movie.title} <span className="revrate">Reviews and Ratings</span></span></center></h1>
-
+            {this.state.showPopup ?  <Popup  text='Click "Close Button" to hide popup'  closePopup={this.togglePopup.bind(this)}  />  : null  }  
             <div  className="innerMain">
               <div className="moviedetails">
                 <div className="moviecontent">
@@ -158,7 +172,8 @@ class MovieDisplay extends Component {
                           </select>
                         </div>
                       </div> 
-                    <button className="addreview"> ADD Review</button>
+                    <button className="addreview" onClick={this.togglePopup.bind(this)}> ADD Review</button>
+                    
                     <button className="next" onClick={this.next}>Next</button>
                     </div>
                 

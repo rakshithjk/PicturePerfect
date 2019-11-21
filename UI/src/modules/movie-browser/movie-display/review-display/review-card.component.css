@@ -3,7 +3,7 @@
     flex-direction: column;
     padding: 10px;
     justify-content: center;;
-    width: 100%;
+    width: 99%;
 }
 
 .fline {
@@ -14,11 +14,21 @@
 
 .name {
     padding-right: 20px;;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 20px;
+    color: black;
 }
 
 .reviewtext {
    
+    color: darkgrey;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+.rating {
     color: black;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 18px;
 }
 
 .DeleteOptions {
@@ -35,3 +45,28 @@
 .main:hover .DeleteOptions{
     opacity: 1;
 }
+
+
+.stars-outer {
+    display: inline-block;
+    position: relative;
+    font-family: FontAwesome;
+  }
+   
+  .stars-outer::before {
+    content: "\f006 \f006 \f006 \f006 \f006";
+  }
+   
+  .stars-inner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 0;
+  }
+   
+  .stars-inner::before {
+    content: "\f005 \f005 \f005 \f005 \f005";
+    color: #f8ce0b;
+  }

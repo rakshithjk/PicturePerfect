@@ -19,6 +19,7 @@ import Search from '../movie-browser/movie-search/movie-search.container'
 import MovieDisplay from '../movie-browser/movie-display/movie-display.container'
 import MovieShows from '../movie-browser/movie-shows/movie-shows.display'
 import AddNew from '../movie-browser/add-new/add-new.component'
+
 const HomeDisplay = (movieColumns) => (
   
   <div className="home">
@@ -69,7 +70,7 @@ class HomePage extends React.Component{
         return (
             <div>       
           <Router>
-                <AppBar title='Picture Perfect' style={{backgroundColor: "blue"}} >
+                <AppBar title='Picture Perfect' position="static" style={{backgroundColor: "#a40606"}} className="appbar">
         <div className="appbarbtn">
           <Link to="/">
         

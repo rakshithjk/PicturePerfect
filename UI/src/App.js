@@ -7,8 +7,14 @@ class App extends Component {
   render() {
     return (
       // Provides the Material UI theme to child components
+      
       <MuiThemeProvider >
+        <head>
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet"/>
+      </head>
+      <body>
         <HomePage />
+        </body>
       </MuiThemeProvider>
     );
   }

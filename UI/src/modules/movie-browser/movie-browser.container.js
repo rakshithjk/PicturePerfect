@@ -29,12 +29,15 @@ class MovieBrowser extends React.Component {
     
     this.handleScroll = this.handleScroll.bind(this);
     this.handleDropdownChange = this.handleDropdownChange.bind(this);
+    this.topFunction = this.topFunction.bind(this);
   }
 
   componentDidMount() {
     window.onscroll = this.handleScroll;
     console.log("asdasdassdasdasd0",this.props.content)
     this.props.getTopMovies(this.state.currentPage,this.state.sortState);
+    //document.getElementsByClassName("moviebtn").setAttribute("background","background: linear-gradient(315deg, #a40606 0%, #d98324 0%)");
+    
   }
 
   componentWillUnmount() {
@@ -54,13 +57,26 @@ class MovieBrowser extends React.Component {
     }
   }
 
+  topFunction() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  }
+
   handleScroll() {
     //console.log(this);
     //console.log(this.state);
     //console.log(this.props);
     //console.log(this.props.topMovies);
     //console.log(this.props.topMovies.response)
-    //const {topMovies} = this.props;                                            
+    //const {topMovies} = this.props;      
+    var mybutton = document.getElementById("myBtn");
+    if(mybutton!=null){
+      if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        mybutton.style.display = "block";
+      } else {
+        mybutton.style.display = "none";
+      }
+    }                                      
     if (!this.props.topMovies.isLoading) {
       let percentageScrolled = scrollHelpers.getPercentageScrolledDown(window);
       if (percentageScrolled > .8) {
@@ -120,7 +136,7 @@ class MovieBrowser extends React.Component {
       <div id="main">
         
       
-
+        
     
       
         
@@ -131,6 +147,7 @@ class MovieBrowser extends React.Component {
             <Route path="/movie-list" >  
               <div id="listing">
               <div className="filters">
+                <h1></h1>
                 <select className="select-style" onChange={this.handleDropdownChange} name="Filters">
                 <option disabled selected value> -- Select a filter -- </option>
                   <option value="id_asc">Sort by Id ascending ( Default )</option>
@@ -138,10 +155,12 @@ class MovieBrowser extends React.Component {
                   <option value="tt_asc">Sort by Title</option>
                 </select>
                 <button className="addbtn"><Link to="/addnew">Add new</Link></button>
+                <button onClick={this.topFunction} id="myBtn" title="Go to top">Top</button>
               </div>
               <Container id="container"  >
                 <Row id="row">
                   <MovieList movies={movies} isLoading={topMovies.isLoading}  />
+                  
                 </Row>
               </Container>
               </div>
