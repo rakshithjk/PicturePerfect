@@ -24,10 +24,13 @@
   .popup:hover .DeleteOptions {
       opacity: 0;
   }
-
+.new {
+    color: whitesmoke;
+}
  .head {
      display: flex;
      justify-content: space-between;
+     color: whitesmoke;
  }
 
  .message {
@@ -73,4 +76,5 @@
 
  .ratingtext {
      font-family: Georgia, 'Times New Roman', Times, serif;
+     color: whitesmoke;
  }

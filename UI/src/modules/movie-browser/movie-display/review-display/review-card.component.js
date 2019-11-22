@@ -9,11 +9,19 @@ class ReviewCardComponent extends React.Component {
   }
 
   componentDidMount() {
-    this.starfunc();
+    //this.starfunc();
   }
 
-  starfunc = () => {
-    var { review } = this.props;
+  
+  
+
+ 
+
+  render() {
+    console.log("reviewcard", this.props);
+    //this.starfunc();
+    const { review } = this.props;
+    // The CardTitle.subtitle won't render if it's null
     var rating = review.Rating;
 
     if (rating > 5) {
@@ -26,18 +34,7 @@ class ReviewCardComponent extends React.Component {
     const starPercentageRounded = Math.round(starPercentage / 10) * 10;
     // document.querySelector(id).style.width = starPercentageRounded;
     console.log(starPercentageRounded);
-    this.setState({
-      percentage: starPercentageRounded || 0
-    })
-    
-  }
 
-  render() {
-    console.log("reviewcard", this.props);
-
-    const { review } = this.props;
-    const { percentage } = this.state;
-    // The CardTitle.subtitle won't render if it's null
 
     console.log("qwer", review.review_id);
     return (
@@ -45,10 +42,10 @@ class ReviewCardComponent extends React.Component {
         <div className="fline">
           <h1 className="name">{review.user_name}</h1>
 
-          <h1 className="rating">
-            Rating : {review.Rating}
+          <h1 className="ratingtextcard">
+            Rating : 
             <div class="stars-outer">
-              <div class="stars-inner"  style={{width: `${percentage}%`}}></div>
+              <div class="stars-inner"  style={{width: `${starPercentageRounded}%`}}></div>
             </div>
           </h1>
 

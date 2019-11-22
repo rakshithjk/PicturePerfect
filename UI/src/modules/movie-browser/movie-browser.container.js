@@ -176,7 +176,7 @@ class MovieBrowser extends React.Component {
                   <option value="rd_asc">Sort by Release Date ascending</option>
                   <option value="tt_asc">Sort by Title</option>
                 </select>
-                <button className="addbtn"><Link to="/addnew">Add new</Link></button>
+                <Link className="addbtn" to="/addnew">Add New</Link>
                 <button onClick={this.topFunction} id="myBtn" title="Go to top">Top</button>
               </div>
               <Container id="container"  >

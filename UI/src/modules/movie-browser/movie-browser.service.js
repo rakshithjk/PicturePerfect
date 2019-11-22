@@ -106,3 +106,5 @@ export const getMovieReviews = async({movieId,order,page}) => {
     //alert(order,page);
     return fetch(fullUrl);
 }
+
+

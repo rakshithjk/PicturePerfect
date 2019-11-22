@@ -166,13 +166,14 @@ class MovieDisplay extends Component {
     var avg = 0;
    if(type == "movie"){
 
-     avg = (this.props.moviereviews.avg_rating);
+     avg = this.props.moviereviews.response ? (Math.round((this.props.moviereviews.response.avg_rating/2) * 10) / 10) : '';
 
   }
   else {
-    avg = (this.props.tvshowreviews.avg_rating);
+    avg = this.props.tvshowreviews.response ? (Math.round((this.props.tvshowreviews.response.avg_rating/2) * 10) / 10) : '';
   }
 
+  
   return(avg);
    }
     render() {
@@ -182,7 +183,8 @@ class MovieDisplay extends Component {
       const reviews = check(this.checkdata());
       console.log("saawwwwwqq",reviews);
       console.log("123",reviews);
-      alert(this.avgrating());
+      const rating = this.avgrating();
+      console.log("rating is ", rating);
       return (
         <div style={styles.dialogContent(movie.background_path)} className="displaycontainer">
             <h1><center><span className="text1">{movie.title} <span className="revrate">Reviews and Ratings</span></span></center></h1>
@@ -196,7 +198,7 @@ class MovieDisplay extends Component {
                           <img  src={movie.poster_path} className="poster1" />
                         </div>
                       
-                        <h2><span className="rating">Rating {this.avgrating()}</span></h2>
+                        <h2><span className="rating">Average Rating -  {rating}</span></h2>
                         <h2><span className="release">Release Date: {movie.release_date}</span></h2>
                         <h2><span className="genre">Genres - {movie.genre_ids}</span></h2>
                         <h3><span className="smry">{movie.overview}</span></h3>
@@ -208,12 +210,16 @@ class MovieDisplay extends Component {
 
               <div className="review">
                   <div className="choicebuttons">
-                    <button className="prev" onClick={this.prev}>Previous</button>
-                    <button className="shows"> <Link to="/shows"><span className="showstext">SHOWS</span></Link></button> 
+
+                  <svg className="svg-icon" viewBox="0 0 20 20" onClick={this.prev}>
+							        <path fill="none" d="M8.388,10.049l4.76-4.873c0.303-0.31,0.297-0.804-0.012-1.105c-0.309-0.304-0.803-0.293-1.105,0.012L6.726,9.516c-0.303,0.31-0.296,0.805,0.012,1.105l5.433,5.307c0.152,0.148,0.35,0.223,0.547,0.223c0.203,0,0.406-0.08,0.559-0.236c0.303-0.309,0.295-0.803-0.012-1.104L8.388,10.049z"></path>
+						        </svg>
+                    
+                    <Link to={{pathname:`/shows/${movie.id}`}} className="showstext">SHOWS</Link>
                     <div className="filteroption">
                       <div className="filters">
                         <select className="select-style" onChange={this.handleDropdownChange} name="Filters">
-                          <option disabled selected value> -- Select a filter -- </option>
+                          <option disabled selected value defaultValue> -- Select a filter -- </option>
                           <option value="id_asc">Sort by Id ascending ( Default )</option>
                           <option value="rd_asc">Sort by Date ascending</option>
                           <option value="tt_asc">Sort by Rating descending</option>
@@ -221,8 +227,9 @@ class MovieDisplay extends Component {
                         </div>
                       </div> 
                     <button className="addreview" onClick={this.togglePopup.bind(this)}> ADD Review</button>
-                    
-                    <button className="next" onClick={this.next}>Next</button>
+                    <svg className="svg-icon" viewBox="0 0 20 20" onClick={this.next}>
+							        <path fill="none" d="M11.611,10.049l-4.76-4.873c-0.303-0.31-0.297-0.804,0.012-1.105c0.309-0.304,0.803-0.293,1.105,0.012l5.306,5.433c0.304,0.31,0.296,0.805-0.012,1.105L7.83,15.928c-0.152,0.148-0.35,0.223-0.547,0.223c-0.203,0-0.406-0.08-0.559-0.236c-0.303-0.309-0.295-0.803,0.012-1.104L11.611,10.049z"></path>
+						          next</svg>
                     </div>
                 
                   

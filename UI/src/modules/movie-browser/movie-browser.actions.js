@@ -1,6 +1,7 @@
 
 import {createAsyncActionCreator} from '../common/redux.helpers';
 import * as movieService from './movie-browser.service';
+import { release } from 'os';
 
 export const keys = {
   'GET_TOP_MOVIES': 'GET_TOP_MOVIES',
@@ -10,7 +11,8 @@ export const keys = {
   'GET_MOVIES_HOME': 'GET_MOVIES_HOME',
   'GET_TVSHOWS_HOME': 'GET_TVSHOWS_HOME',
   'GET_TOP_TVSHOWS':'GET_TOP_TVSHOWS',
-  'GET_TVSHOW_REVIEWS':'GET_TVSHOW_REVIEWS'
+  'GET_TVSHOW_REVIEWS':'GET_TVSHOW_REVIEWS',
+  'SUBMIT_DATA':'SUBMIT_DATA'
 };
 
 export const getTopMovies = (page,order) => createAsyncActionCreator(
@@ -64,3 +66,4 @@ export const getTVShowReviews = (movieId, order, page) => createAsyncActionCreat
   movieService.getTVShowReviews,
   {movieId, order, page}
 );
+

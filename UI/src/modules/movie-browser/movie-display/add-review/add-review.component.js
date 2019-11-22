@@ -8,7 +8,7 @@ return (
         <div className='popup\_inner'>  
             <div className="head">
                 <h1></h1>
-                <h1>Add Rating</h1>
+                <h1 className="new">Add Rating</h1>
     
         
                 <svg  className="closeicon"  version="1.1" onClick={this.props.closePopup}
@@ -36,7 +36,7 @@ return (
                 <br/>
                 <br/>
     
-                <center><h1> Enter Review</h1></center>
+                <center><h1 className="new"> Enter Review</h1></center>
                 <center><textarea className="message" rows="10" cols="50"></textarea></center>
                 <center><input type="submit" className="sbtbtn"></input></center>
          </ div>  

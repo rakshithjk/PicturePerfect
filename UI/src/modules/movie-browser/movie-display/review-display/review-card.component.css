@@ -3,7 +3,7 @@
     flex-direction: column;
     padding: 10px;
     justify-content: center;;
-    width: 99%;
+    width: 700px;
 }
 
 .fline {
@@ -23,9 +23,10 @@
    
     color: darkgrey;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 16px;
 }
 
-.rating {
+.ratingtextcard {
     color: black;
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-size: 18px;

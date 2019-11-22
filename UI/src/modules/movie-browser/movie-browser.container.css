@@ -22,13 +22,33 @@
 }
 
 
+.svg-icon {
+  width: 3em;
+  height: 3em;
+}
+
+
+
+.svg-icon path,
+.svg-icon polygon,
+.svg-icon rect {
+  fill: white;
+}
+
+.svg-icon circle {
+  stroke: white;
+  stroke-width: 1;
+}
+
+
 
 .select-style {
   border: 1px solid #ccc;
   border-radius: 3px;
   overflow: hidden;
   background-color: darkgoldenrod;
-  padding: 10px;
+  padding: 4px;
+  margin: 10px;
 
 }
 
@@ -72,5 +92,8 @@
   border: 1px solid #ccc;
   border-radius: 3px;
   overflow: hidden;
-  background-color: darkgoldenrod;;
+  background-color: darkgoldenrod;
+  margin: 5px;
+  text-decoration: none;
+  color: black;
 }
