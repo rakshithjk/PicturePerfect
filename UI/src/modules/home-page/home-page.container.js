@@ -3,7 +3,7 @@ import React from 'react';
 import  './home-page.container.css';
 import {connect} from 'react-redux';
 import {AppBar, TextField, RaisedButton} from 'material-ui';
-import {getHomeMovies} from '../movie-browser/movie-browser.actions'
+import {getHomeMovies,getHomeTVShows} from '../movie-browser/movie-browser.actions'
 import * as movieHelpers from '../movie-browser/movie-browser.helpers'
 import {Container, Row, Col, Button} from 'react-bootstrap';
 import MovieList from '../movie-browser/movie-list/movie-list.component'
@@ -20,7 +20,7 @@ import MovieDisplay from '../movie-browser/movie-display/movie-display.container
 import MovieShows from '../movie-browser/movie-shows/movie-shows.display'
 import AddNew from '../movie-browser/add-new/add-new.component'
 
-const HomeDisplay = (movieColumns) => (
+const HomeDisplay = (movieColumns,tvshowsColumns) => (
   
   <div className="home">
     
@@ -34,8 +34,8 @@ const HomeDisplay = (movieColumns) => (
       <br/><h1 class="sectionTitle">TV Shows</h1>
       <hr/>
       <div className="moviehome">
-        {movieColumns}
-        <label className="more"><Link to="/movie-list"><h1 className="moretext">MORE</h1></Link></label>
+        {tvshowsColumns}
+        <label className="more"><Link to="/tvshows-list"><h1 className="moretext">MORE</h1></Link></label>
       </div>
       <br/>
       <br/><h1 class="sectionTitle">Documentaries</h1>
@@ -56,17 +56,25 @@ class HomePage extends React.Component{
     componentDidMount() {
         
         this.props.getHomeMovies();
+        this.props.getHomeTVShows();
       }
 
 
     render(){
-      const {topMoviesHome} = this.props;
+      const {topMoviesHome,topTVShowsHome} = this.props;
+      
       const movies = movieHelpers.getMoviesList(topMoviesHome.response);
+      const tvshows = movieHelpers.getMoviesList(topTVShowsHome.response);
           const movieColumns = movies ? movies.map(movie => (
       
-              <MovieCard movie={movie} styles={{backgroundColor:"black"}} />
+              <MovieCard movie={movie} styles={{backgroundColor:"black"}} content={0} />
           )) : null;
         
+
+          const tvshowsColumns = tvshows ? tvshows.map(movie => (
+      
+            <MovieCard movie={movie} styles={{backgroundColor:"black"}} content={1}/>
+        )) : null;
         return (
             <div>       
           <Router>
@@ -95,18 +103,21 @@ class HomePage extends React.Component{
 
         <Switch>
         <Route exact path='/'>
-          {HomeDisplay(movieColumns)}
+          {HomeDisplay(movieColumns,tvshowsColumns)}
         </Route>
-        <Route path="/movie-list" >
-            <MovieBrowser content={0}/>
-        </Route>
+        <Route  path="/movie-list"
+              render={(props) => <MovieBrowser {...props} content={0} />}/>
 
+        
+            <Route  path="/tvshows-list" render={(props) => <MovieBrowser {...props} content={1} />} />
         
         <Route path="/search">
               <Search />
         </Route>
 
-        <Route path='/moviedescription/:movieid' component={MovieDisplay}/>
+        <Route path='/movie/moviedescription/:movieid' component={MovieDisplay}/>
+
+        <Route path='/tvshow/moviedescription/:movieid' component={MovieDisplay}/>
         
         <Route path="/addnew">
                 <AddNew/>
@@ -133,11 +144,12 @@ class HomePage extends React.Component{
 export default connect(
     // Map nodes in our state to a properties of our component
     (state) => ({
-      topMoviesHome: state.movieBrowser.topMoviesHome
+      topMoviesHome: state.movieBrowser.topMoviesHome,
+      topTVShowsHome: state.movieBrowser.topTVShowsHome
       
     }),
     // Map action creators to properties of our component
-    { getHomeMovies }
+    { getHomeMovies,getHomeTVShows }
   )(HomePage);
 
   //

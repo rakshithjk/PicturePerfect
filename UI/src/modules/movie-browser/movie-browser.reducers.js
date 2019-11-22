@@ -71,15 +71,24 @@ const movieBrowserReducer = combineReducers({
   topMovies: createAsyncReducer(movieActionKeys.GET_TOP_MOVIES, {
     [`${movieActionKeys.GET_TOP_MOVIES}_SUCCESS`]: moviesSuccessReducer
   }),
+  topTVShows: createAsyncReducer(movieActionKeys.GET_TOP_MOVIES, {
+    [`${movieActionKeys.GET_TOP_TVSHOWS}_SUCCESS`]: moviesSuccessReducer
+  }),
   topMoviesHome: createAsyncReducer(movieActionKeys.GET_MOVIES_HOME),
+  topTVShowsHome: createAsyncReducer(movieActionKeys.GET_TVSHOWS_HOME),
   movieSearch: createAsyncReducer(movieActionKeys.SEARCH_MOVIES, {
     [`${movieActionKeys.SEARCH_MOVIES}_SUCCESS`]: moviesSuccessReducer
   }),
   movieDetails: createAsyncReducer(movieActionKeys.GET_MOVIE_DETAILS),
 
-  topReviews: createAsyncReducer(movieActionKeys.GET_MOVIE_REVIEWS, {
+  topMovieReviews: createAsyncReducer(movieActionKeys.GET_MOVIE_REVIEWS, {
     [`${movieActionKeys.GET_MOVIE_REVIEWS}_SUCCESS`]: reviewsSuccessReducer
   }),
+
+  topTVShowReviews: createAsyncReducer(movieActionKeys.GET_TVSHOW_REVIEWS, {
+    [`${movieActionKeys.GET_TVSHOW_REVIEWS}_SUCCESS`]: reviewsSuccessReducer
+  }),
+
 });
 
 export default movieBrowserReducer;

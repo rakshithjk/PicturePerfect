@@ -12,6 +12,7 @@ import {
   Link
 } from "react-router-dom";
 import Popup from "./add-review/add-review.component"
+import { qualifiedTypeIdentifier } from '@babel/types';
 
 
 
@@ -57,7 +58,8 @@ class MovieDisplay extends Component {
     document.body.scrollTop = 0;
     document.documentElement.scrollTop = 0;
     this.setState({currentPage: 1});
-    this.props.getMovieReviews(this.props.location.state.movie.movie.id, this.state.sortState);
+    this.setState({sortState: 0});
+    this.getdata();
   }
 
   handleDropdownChange(e) {
@@ -85,7 +87,7 @@ class MovieDisplay extends Component {
     //console.log("whats happening",this.props.topMovies.response);
     //setState({results:[]})
     //alert(this.state.sortState);
-    this.props.getMovieReviews(this.props.location.state.movie.movie.id, this.state.sortState);
+    this.getdata();
   }
 
   async prev() {
@@ -94,7 +96,7 @@ class MovieDisplay extends Component {
     const pg = (this.state.currentPage-1)>1?(this.state.currentPage-1):1;
     //alert(pg);
     await this.setState({currentPage: pg}) ;
-    this.props.getMovieReviews(this.props.location.state.movie.movie.id, this.state.sortState,this.state.currentPage);
+    this.getdata();
     }
     else{
       alert("This is the first page")
@@ -106,7 +108,7 @@ class MovieDisplay extends Component {
     const pg = (this.state.currentPage+1);
     //alert(pg);
     await this.setState({currentPage: pg}) ;
-    this.props.getMovieReviews(this.props.location.state.movie.movie.id, this.state.sortState,this.state.currentPage);
+    this.getdata();
   }
 
   async rd_asc() {
@@ -116,7 +118,7 @@ class MovieDisplay extends Component {
     //console.log("whats happening",this.props.topMovies.response);
     //setState({results:[]})
     //alert(this.state.sortState);
-    this.props.getMovieReviews(this.props.location.state.movie.movie.id, this.state.sortState);
+    this.getdata();
   }
   
   async tt_asc() {
@@ -126,17 +128,61 @@ class MovieDisplay extends Component {
     //console.log("whats happening",this.props.topMovies.response);
     //setState({results:[]})
     //alert(this.state.sortState);
-    this.props.getMovieReviews(this.props.location.state.movie.movie.id, this.state.sortState);
+    this.getdata();
   }
 
-   
+   getdata() {
+    var url = (window.location.href)+"";
+      const data = url.split("/");
+     const type = data[3];
+     //alert(type);
+     
+     if(type == "movie"){
+       this.props.getMovieReviews(this.props.location.state.movie.movie.id, this.state.sortState,this.state.currentPage);
+     }
+     else{
+      this.props.getTVShowReviews(this.props.location.state.movie.movie.id, this.state.sortState,this.state.currentPage);
+     }
+   }
 
+   checkdata() {
+    var url = (window.location.href)+"";
+    const data = url.split("/");
+   const type = data[3];
+    if(type == "movie"){
+      return (this.props.moviereviews.response);
+
+    }
+    else {
+      return (this.props.tvshowreviews.response);
+    }
+   }
+
+   avgrating(){
+
+    var url = (window.location.href)+"";
+    const data = url.split("/");
+   const type = data[3];
+    var avg = 0;
+   if(type == "movie"){
+
+     avg = (this.props.moviereviews.avg_rating);
+
+  }
+  else {
+    avg = (this.props.tvshowreviews.avg_rating);
+  }
+
+  return(avg);
+   }
     render() {
       //console.log(this.props);
       const {movie} = this.props.location.state.movie;
-
-      const reviews = check(this.props.reviews.response);
+      
+      const reviews = check(this.checkdata());
+      console.log("saawwwwwqq",reviews);
       console.log("123",reviews);
+      alert(this.avgrating());
       return (
         <div style={styles.dialogContent(movie.background_path)} className="displaycontainer">
             <h1><center><span className="text1">{movie.title} <span className="revrate">Reviews and Ratings</span></span></center></h1>
@@ -150,7 +196,7 @@ class MovieDisplay extends Component {
                           <img  src={movie.poster_path} className="poster1" />
                         </div>
                       
-                        <h2><span className="rating">Rating {movie.vote_average}</span></h2>
+                        <h2><span className="rating">Rating {this.avgrating()}</span></h2>
                         <h2><span className="release">Release Date: {movie.release_date}</span></h2>
                         <h2><span className="genre">Genres - {movie.genre_ids}</span></h2>
                         <h3><span className="smry">{movie.overview}</span></h3>
@@ -202,7 +248,8 @@ class MovieDisplay extends Component {
   export default connect(
     // Map nodes in our state to a properties of our component
     (state) => ({
-      reviews: state.movieBrowser.topReviews
+      moviereviews: state.movieBrowser.topMovieReviews,
+      tvshowreviews: state.movieBrowser.topTVShowReviews
       
     }),
     // Map action creators to properties of our component

@@ -44,6 +44,18 @@ const createMovieDbUrl = (relativeUrl, queryParams) => {
   return baseUrl;
 }
 
+
+
+export const getTopTVShows = async ({page,order}) => {
+  const fullUrl = createMovieDbUrl('/tvshows/top_rated', {
+    page,
+    order
+  });
+  console.log(fullUrl)
+  return fetch(fullUrl);
+}
+
+
 export const getTopMovies = async ({page,order}) => {
   const fullUrl = createMovieDbUrl('/movie/top_rated', {
     page,
@@ -67,17 +79,30 @@ export const getHomeMovies = async() => {
   return fetch(fullUrl);
 }
 
+export const getHomeTVShows = async() => {
+  const fullUrl = createMovieDbUrl('/home/tvshows');
+  return fetch(fullUrl);
+}
+
 export const getMovieDetails = async ({movieId}) => {
   const fullUrl = createMovieDbUrl(`/movie/${movieId}`);
   return fetch(fullUrl);
 }
 
 export const getMovieReviews = async({movieId,order,page}) => {
-  const fullUrl = createMovieDbUrl(`/reviews/${movieId}`, {
+  const fullUrl = createMovieDbUrl(`/movie/reviews/${movieId}`, {
     page,
     order
   });
+  //alert(order,page);
   return fetch(fullUrl);
-  
+}
 
+  export const getTVShowReviews = async({movieId,order,page}) => {
+    const fullUrl = createMovieDbUrl(`/tvshow/reviews/${movieId}`, {
+      page,
+      order
+    });
+    //alert(order,page);
+    return fetch(fullUrl);
 }

@@ -10,11 +10,11 @@ const styles = {
 }
 
 
-const MovieListComponent = ({movies, isLoading}) => {
+const MovieListComponent = ({movies, isLoading, content}) => {
   console.log("mosss",movies);
   const movieColumns = movies ? movies.map(movie => (
     
-      <MovieCard movie={movie} styles={{backgroundColor:"black"}} />
+      <MovieCard movie={movie} styles={{backgroundColor:"black"}} content={content} />
   )) : null;  
   
   return (

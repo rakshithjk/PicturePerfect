@@ -43,17 +43,26 @@ class MovieCardComponent extends React.Component {
     console.log("####################comom", nextProps);
     //alert("dasdsad",nextProps);
   }
+
+  getcontent(){
+    if(this.props.content == 0){
+      return ("/movie");
+    }
+    else {
+      return ("/tvshow")
+    }
+  }
   render() {
     console.log("moviecard",this.props);
     
     const {movie, openMovieModal} = this.props;
     // The CardTitle.subtitle won't render if it's null
     const subtitle = this.state.isMouseOver ? movie.genre_ids : null;
-
+    const url = this.getcontent();
     console.log("qwer",movie.title);
     return (
       
-         <Link to={{pathname:`/moviedescription/${movie.id}`,state:{movie:{movie}} }} >
+         <Link to={{pathname:url+`/moviedescription/${movie.id}`,state:{movie:{movie}} }} >
       <Card
         style={styles.card}
         onMouseOver={() => this.setState({isMouseOver: true})}

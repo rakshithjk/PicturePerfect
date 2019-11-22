@@ -107,10 +107,12 @@
   font-size: 50px;
   font-weight: 400;
   font-size: 48px;
-  line-height: 45px;  
 
 }
 
+.smry {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
 .revrate {
   color: #FD6400;
   font-weight: 400;
@@ -118,6 +120,7 @@
 }
 
 .moviecontent {
+  font-family: Georgia, 'Times New Roman', Times, serif;
   background-color: dimgray;
   padding: 10px;
 }

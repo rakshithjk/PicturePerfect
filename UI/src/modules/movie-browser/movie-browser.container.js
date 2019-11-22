@@ -35,7 +35,12 @@ class MovieBrowser extends React.Component {
   componentDidMount() {
     window.onscroll = this.handleScroll;
     console.log("asdasdassdasdasd0",this.props.content)
-    this.props.getTopMovies(this.state.currentPage,this.state.sortState);
+    if (this.props.content == 0){
+      this.props.getTopMovies(this.state.currentPage,this.state.sortState);
+    }
+    else {
+      this.props.getTopTVshows(this.state.currentPage,this.state.sortState);
+    }
     //document.getElementsByClassName("moviebtn").setAttribute("background","background: linear-gradient(315deg, #a40606 0%, #d98324 0%)");
     
   }
@@ -81,7 +86,7 @@ class MovieBrowser extends React.Component {
       let percentageScrolled = scrollHelpers.getPercentageScrolledDown(window);
       if (percentageScrolled > .8) {
         const nextPage = this.state.currentPage + 1;
-        this.props.getTopMovies(nextPage,this.state.sortState);
+        this.getdata();
         this.setState({currentPage: nextPage});
       }
     }
@@ -94,7 +99,7 @@ class MovieBrowser extends React.Component {
     console.log("whats happening",this.props.topMovies.response);
     //setState({results:[]})
     //alert(this.state.sortState);
-    this.props.getTopMovies(this.state.currentPage,this.state.sortState)
+    this.getdata();
   }
 
 
@@ -105,7 +110,7 @@ class MovieBrowser extends React.Component {
     console.log("whats happening",this.props.topMovies.response);
     //setState({results:[]})
     //alert(this.state.sortState);
-    this.props.getTopMovies(this.state.currentPage,this.state.sortState)
+    this.getdata();
   }
   
   async tt_asc() {
@@ -115,18 +120,38 @@ class MovieBrowser extends React.Component {
     console.log("whats happening",this.props.topMovies.response);
     //setState({results:[]})
     //alert(this.state.sortState);
-    this.props.getTopMovies(this.state.currentPage,this.state.sortState)
+    this.getdata();
   }
 
+  getdata() {
+    if (this.props.content == 0){
+      this.props.getTopMovies(this.state.currentPage,this.state.sortState);
+    }
+    else {
+      this.props.getTopTVshows(this.state.currentPage,this.state.sortState);
+    }
+  }
+  getresponse() {
+    if (this.props.content == 0){ 
+      
+      return(this.props.topMovies.response);
+    }
+    else{
+      return(this.props.topTVShows.response);
+    }
+  }
   render() {
     console.log(this);
     console.log(this.state);
     console.log(this.props);
     console.log(this.props.topMovies);
     console.log("res",this.props.topMovies.response)
-    //const {topMovies} = this.props;   
-    const {topMovies} = this.props;
-    const movies = movieHelpers.getMoviesList(this.props.topMovies.response);
+    const {topMovies} = this.props;  
+
+    const movies = movieHelpers.getMoviesList(this.getresponse());
+    
+    console.log("adsdsadasdasd",movies);
+    
     console.log("movies",movies);
     
     
@@ -141,10 +166,7 @@ class MovieBrowser extends React.Component {
       
         
       
-      
-          <Switch>
-          
-            <Route path="/movie-list" >  
+       
               <div id="listing">
               <div className="filters">
                 <h1></h1>
@@ -159,15 +181,12 @@ class MovieBrowser extends React.Component {
               </div>
               <Container id="container"  >
                 <Row id="row">
-                  <MovieList movies={movies} isLoading={topMovies.isLoading}  />
+                  <MovieList movies={movies} isLoading={topMovies.isLoading} content={this.props.content}  />
                   
                 </Row>
               </Container>
               </div>
               
-            </Route>
-            
-            </Switch>
         
         
     
@@ -182,7 +201,8 @@ class MovieBrowser extends React.Component {
 export default connect(
   // Map nodes in our state to a properties of our component
   (state) => ({
-    topMovies: state.movieBrowser.topMovies
+    topMovies: state.movieBrowser.topMovies,
+    topTVShows: state.movieBrowser.topTVShows
     
   }),
   // Map action creators to properties of our component

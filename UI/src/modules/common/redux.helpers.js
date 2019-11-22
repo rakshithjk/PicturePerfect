@@ -21,6 +21,7 @@ const createAction = (type, actionProps) => {
       dispatch(createAction(`${actionType}_START`, {request: requestParams}));
       // NOTE: asyncRequestFn must accept single object parameter
       // in order to resolve param values
+      
       return asyncRequestFn(requestParams).then(response => {
           response.json()
             .then(json => dispatch(createAction(`${actionType}_SUCCESS`, { response: json })))

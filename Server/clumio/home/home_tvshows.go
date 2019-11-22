@@ -13,12 +13,12 @@ import (
 
 // All structs declared for functions, (to read from database)
 
-type movie_list struct {
+type tvshows_list struct {
 	Page int `json:"page"`
 	Sort int `json:"sort:`
-	Results []movie `json:"results"`
+	Results []tvshow `json:"results"`
 }
-type movie struct {
+type tvshow struct {
     Id      int `json:"id"`
     Title   string `json:"title"`
     Language    string `json:"language"`
@@ -29,13 +29,15 @@ type movie struct {
     Genre_ids string `json:"genre_ids"`
 }
 
-type total_page_count struct{
+type total_page_count_tvshow struct{
 	pages int 
 }
 
-//  homeMovie retrieves only 5 movies to display in the homepage
 
-func HomeMovieDisplay(w http.ResponseWriter, r *http.Request) {
+
+//  hometvshow retrieves only 5 tvshows to display in the homepage
+
+func HomeTVShowsDisplay(w http.ResponseWriter, r *http.Request) {
 	utils.EnableCors(&w)													// Function to allow CORS
 
 
@@ -48,7 +50,7 @@ func HomeMovieDisplay(w http.ResponseWriter, r *http.Request) {
 
 
 
-	var query = "select * from movies  limit 5 " 	// Query string
+	var query = "select * from tvshows  limit 5 " 	// Query string
 	fmt.Println(query)
 	rows,err:=db.Query(query)
 
@@ -56,13 +58,13 @@ func HomeMovieDisplay(w http.ResponseWriter, r *http.Request) {
 		fmt.Println(err)
 	}
 
-	var list movie_list
-	var tag movie
+	var list tvshows_list
+	var tag tvshow
 	list.Page = 1
 	list.Sort = 0
 	for rows.Next(){
 		
-	 err:=rows.Scan(&tag.Id,&tag.Title,&tag.Language,&tag.Release_date,&tag.Poster_path,&tag.Background_path,&tag.Overview,&tag.Genre_ids)
+	 err:=rows.Scan(&tag.Id,&tag.Title,&tag.Release_date,&tag.Poster_path,&tag.Background_path,&tag.Overview,&tag.Genre_ids,&tag.Language)
 	 if err != nil {
 	 fmt.Println(err)
 		}
