@@ -5,7 +5,7 @@ import {Card, CardTitle, CardMedia} from 'material-ui';
 import MovieDisplay from '../movie-display/movie-display.container'
 import {
   BrowserRouter as Router,
-  
+  NavLink,
   Route,
   Link
 } from "react-router-dom";
@@ -62,7 +62,7 @@ class MovieCardComponent extends React.Component {
     console.log("qwer",movie.title);
     return (
       
-         <Link to={{pathname:url+`/moviedescription/${movie.id}`,state:{movie:{movie}} }} >
+         <NavLink to={{pathname:url+`/moviedescription/${movie.id}`,state:{movie:{movie}} }} activeClassName="description">
       <Card
         style={styles.card}
         onMouseOver={() => this.setState({isMouseOver: true})}
@@ -81,7 +81,7 @@ class MovieCardComponent extends React.Component {
           <img style={styles.bgImage} src={movie.poster_path} />
         </CardMedia>
       </Card>
-      </Link>
+      </NavLink>
       
       
     );

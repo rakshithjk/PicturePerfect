@@ -185,6 +185,10 @@ class MovieDisplay extends Component {
       console.log("123",reviews);
       const rating = this.avgrating();
       console.log("rating is ", rating);
+      var url = (window.location.href)+"";
+      const data = url.split("/");
+     const type = data[3];
+
       return (
         <div style={styles.dialogContent(movie.background_path)} className="displaycontainer">
             <h1><center><span className="text1">{movie.title} <span className="revrate">Reviews and Ratings</span></span></center></h1>
@@ -215,7 +219,7 @@ class MovieDisplay extends Component {
 							        <path fill="none" d="M8.388,10.049l4.76-4.873c0.303-0.31,0.297-0.804-0.012-1.105c-0.309-0.304-0.803-0.293-1.105,0.012L6.726,9.516c-0.303,0.31-0.296,0.805,0.012,1.105l5.433,5.307c0.152,0.148,0.35,0.223,0.547,0.223c0.203,0,0.406-0.08,0.559-0.236c0.303-0.309,0.295-0.803-0.012-1.104L8.388,10.049z"></path>
 						        </svg>
                     
-                    <Link to={{pathname:`/shows/${movie.id}`}} className="showstext">SHOWS</Link>
+                    <Link to={{pathname:`/shows/${type}/${movie.id}`}} className="showstext">SHOWS</Link>
                     <div className="filteroption">
                       <div className="filters">
                         <select className="select-style" onChange={this.handleDropdownChange} name="Filters">

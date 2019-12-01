@@ -89,6 +89,10 @@ const movieBrowserReducer = combineReducers({
     [`${movieActionKeys.GET_TVSHOW_REVIEWS}_SUCCESS`]: reviewsSuccessReducer
   }),
 
+  MovieShows: createAsyncReducer(movieActionKeys.GET_MOVIE_SHOWS, {
+    [`${movieActionKeys.GET_MOVIE_SHOWS}_SUCCESS`]: reviewsSuccessReducer
+
+  })
 });
 
 export default movieBrowserReducer;

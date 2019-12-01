@@ -47,7 +47,7 @@ class App extends Component {
                 <AddNew/>
             </Route>
         
-        <Route path="/shows/:dataid"  render={(props) => <MovieShows  />}/>
+        <Route path="/shows/:type/:dataid"  render={(props) => <MovieShows  />}/>
     </Switch>
     </div>
     </Router>

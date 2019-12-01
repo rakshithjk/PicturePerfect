@@ -44,7 +44,14 @@ const createMovieDbUrl = (relativeUrl, queryParams) => {
   return baseUrl;
 }
 
-
+export const getMovieShows = async ({movieId, order, page}) => {
+  const fullUrl = createMovieDbUrl(`/shows/movie/${movieId}`, {
+    page,
+    order
+  });
+  console.log(fullUrl)
+  return fetch(fullUrl);
+}
 
 export const getTopTVShows = async ({page,order}) => {
   const fullUrl = createMovieDbUrl('/tvshows/top_rated', {

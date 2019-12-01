@@ -12,7 +12,8 @@ export const keys = {
   'GET_TVSHOWS_HOME': 'GET_TVSHOWS_HOME',
   'GET_TOP_TVSHOWS':'GET_TOP_TVSHOWS',
   'GET_TVSHOW_REVIEWS':'GET_TVSHOW_REVIEWS',
-  'SUBMIT_DATA':'SUBMIT_DATA'
+  'SUBMIT_DATA':'SUBMIT_DATA',
+  'GET_MOVIE_SHOWS':'GET_MOVIE_SHOWS'
 };
 
 export const getTopMovies = (page,order) => createAsyncActionCreator(
@@ -67,3 +68,8 @@ export const getTVShowReviews = (movieId, order, page) => createAsyncActionCreat
   {movieId, order, page}
 );
 
+export const getMovieShows = (movieId, order, page) => createAsyncActionCreator(
+  keys.GET_MOVIE_SHOWS,
+  movieService.getMovieShows,
+  {movieId, order, page}
+);

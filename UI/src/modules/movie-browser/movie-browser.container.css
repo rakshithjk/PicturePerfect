@@ -21,6 +21,20 @@
   height: 50px;
 }
 
+.searchbarinput {
+  height: 15px;
+  margin-top: 15px;
+  padding: 5px;
+  margin-left: 13px;
+  right: 10px;
+ border-radius: 6px;
+}
+
+.searchdiv {
+  display: flex;
+  float: right;
+  background-color: black;
+}
 
 .svg-icon {
   width: 3em;
@@ -96,4 +110,22 @@
   margin: 5px;
   text-decoration: none;
   color: black;
+}
+
+.search-svg-icon {
+  width: 50px;
+  height: 40px;
+  margin-top: 10px;
+  color: white;
+}
+
+.search-svg-icon path,
+.search-svg-icon polygon,
+.search-svg-icon rect {
+  fill: white;
+}
+
+.search-svg-icon circle {
+  stroke: white;
+  stroke-width: 1;
 }

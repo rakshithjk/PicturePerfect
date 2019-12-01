@@ -33,8 +33,15 @@ type total_page_count_tvshow struct{
 	pages int 
 }
 
+/*
+db = *DB
 
+Init() {
+	db = ..
+}
 
+GetDB() { return db }
+*/
 //  hometvshow retrieves only 5 tvshows to display in the homepage
 
 func HomeTVShowsDisplay(w http.ResponseWriter, r *http.Request) {

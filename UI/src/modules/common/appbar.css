@@ -1,20 +1,21 @@
 .homebtn {
-    background: linear-gradient(315deg, #a40606 90%, #d98324 0%);
+    background: transparent;
    border: none;
    color: white;
-   padding: 15px 32px;
+   
    text-align: center;
    text-decoration: none;
    font-size: 16px;
    align-self: left;
    float: left;
-   margin-left: 10px;
-   margin-top: 10px;
+   margin-left: 25px;
+   font-size: 25px;
+   margin-top: 20px;
    
  }
- .homebtn:hover {
-    background: linear-gradient(315deg, #a40606 0%, #d98324 0%);;
- }
+
+
+
  .moviebtn{
     background: linear-gradient(315deg, #a40606 90%, #d98324 0%);
     border: none;
@@ -46,20 +47,34 @@
     margin-left: 10px;   
  }
  
+ 
+ .homebtnchosen {
+   border-bottom: 5px solid #d98324;
+ }
  .searchbtn:hover {
     background: linear-gradient(315deg, #a40606 0%, #d98324 0%);;
  }
+.searchbtnchosen{
+   border-bottom: 5px solid #d98324;
+}
+.appbarbtn {
+   right: 0px;
+}
 
-
+.text {
+   color: white;
+   padding: 10px;
+   margin-left: 20px;;
+   margin-top: 10px;
+}
 .appbar {
    
     background: linear-gradient(315deg, #a40606 74%, #d98324 74%);
-    
+    height: 60px;
     }
 
 
     .footer {
-        position: ;;
         left: 0;
         bottom: 0;
         width: 100%;

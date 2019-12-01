@@ -11,6 +11,7 @@ import (
  	datalist "clumio/data_Listing/datalist"
  	datalisttvshows "clumio/data_Listing/datalisttvshows"
  	tvshow_reviews "clumio/reviews_handler/tvshowreviews"
+    shows "clumio/shows/shows_handler"
  	//"github.com/davecgh/go-spew/spew"
 )
 
@@ -23,6 +24,13 @@ func main() {
 
 }
 
+/*
+func jsonWriterMiddleware(func () {}interface, err) []byte, error {
+    x := func()
+    jsonBytes = marshal
+    return jsonBytes, nil
+}
+*/
 
 func handleRequests() {
     myRouter := mux.NewRouter()
@@ -34,7 +42,7 @@ func handleRequests() {
     myRouter.HandleFunc("/home/tvshows",home_handler.HomeTVShowsDisplay)
     myRouter.HandleFunc("/tvshows/top_rated", datalisttvshows.DataList)
     myRouter.HandleFunc("/tvshow/reviews/{id}",tvshow_reviews.DisplayReview)
-
+    myRouter.HandleFunc("/shows/{type}/{id}",shows.Shows_handler)
     log.Fatal(http.ListenAndServe(":10000", myRouter))
 }
 
